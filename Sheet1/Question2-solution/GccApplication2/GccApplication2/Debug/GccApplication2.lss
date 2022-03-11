@@ -1,0 +1,259 @@
+
+GccApplication2.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000008  00800100  0000017c  000001f0  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         0000017c  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .comment      00000030  00000000  00000000  000001f8  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000228  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000020  00000000  00000000  00000268  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00000822  00000000  00000000  00000288  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 000006ca  00000000  00000000  00000aaa  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   00000308  00000000  00000000  00001174  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000034  00000000  00000000  0000147c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    000003bc  00000000  00000000  000014b0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    000001dc  00000000  00000000  0000186c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000010  00000000  00000000  00001a48  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+   8:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+   c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  10:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  14:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  18:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  1c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  20:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  24:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  28:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  2c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  30:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  34:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  38:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  3c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  40:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  44:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  48:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  4c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  50:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  54:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  58:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  5c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  60:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  64:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_copy_data>:
+  74:	11 e0       	ldi	r17, 0x01	; 1
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	ec e7       	ldi	r30, 0x7C	; 124
+  7c:	f1 e0       	ldi	r31, 0x01	; 1
+  7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
+  80:	05 90       	lpm	r0, Z+
+  82:	0d 92       	st	X+, r0
+  84:	a8 30       	cpi	r26, 0x08	; 8
+  86:	b1 07       	cpc	r27, r17
+  88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
+  8a:	0e 94 4b 00 	call	0x96	; 0x96 <main>
+  8e:	0c 94 bc 00 	jmp	0x178	; 0x178 <_exit>
+
+00000092 <__bad_interrupt>:
+  92:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000096 <main>:
+
+#include <avr/io.h>
+
+#include <avr/delay.h>
+int main(void)
+{
+  96:	cf 93       	push	r28
+  98:	df 93       	push	r29
+  9a:	cd b7       	in	r28, 0x3d	; 61
+  9c:	de b7       	in	r29, 0x3e	; 62
+  9e:	28 97       	sbiw	r28, 0x08	; 8
+  a0:	0f b6       	in	r0, 0x3f	; 63
+  a2:	f8 94       	cli
+  a4:	de bf       	out	0x3e, r29	; 62
+  a6:	0f be       	out	0x3f, r0	; 63
+  a8:	cd bf       	out	0x3d, r28	; 61
+	DDRB=0xff; // set all the port b to be output
+  aa:	8f ef       	ldi	r24, 0xFF	; 255
+  ac:	84 b9       	out	0x04, r24	; 4
+	unsigned char arr[8]={0x01,0x02,0x04,0x08,0x10,0x20,0x40,0x80}; // arr to can make the loop of leds
+  ae:	88 e0       	ldi	r24, 0x08	; 8
+  b0:	e0 e0       	ldi	r30, 0x00	; 0
+  b2:	f1 e0       	ldi	r31, 0x01	; 1
+  b4:	de 01       	movw	r26, r28
+  b6:	11 96       	adiw	r26, 0x01	; 1
+  b8:	01 90       	ld	r0, Z+
+  ba:	0d 92       	st	X+, r0
+  bc:	8a 95       	dec	r24
+  be:	e1 f7       	brne	.-8      	; 0xb8 <main+0x22>
+	DDRC&=~(1<<0); //set the pin 0 in port c to be input
+  c0:	87 b1       	in	r24, 0x07	; 7
+  c2:	8e 7f       	andi	r24, 0xFE	; 254
+  c4:	87 b9       	out	0x07, r24	; 7
+	DDRC&=~(1<<3); // set the pin 3 in port c to be input
+  c6:	87 b1       	in	r24, 0x07	; 7
+  c8:	87 7f       	andi	r24, 0xF7	; 247
+  ca:	87 b9       	out	0x07, r24	; 7
+	char button_Mode1,button_Mode2; // variable to contains the state of to buttons
+	PORTB=0x00; // set all port b to zero at begin of code
+  cc:	15 b8       	out	0x05, r1	; 5
+	while (1)
+	{
+		PORTB^=0xff;
+  ce:	85 b1       	in	r24, 0x05	; 5
+  d0:	80 95       	com	r24
+  d2:	85 b9       	out	0x05, r24	; 5
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  d4:	2f e9       	ldi	r18, 0x9F	; 159
+  d6:	36 e8       	ldi	r19, 0x86	; 134
+  d8:	81 e0       	ldi	r24, 0x01	; 1
+  da:	21 50       	subi	r18, 0x01	; 1
+  dc:	30 40       	sbci	r19, 0x00	; 0
+  de:	80 40       	sbci	r24, 0x00	; 0
+  e0:	e1 f7       	brne	.-8      	; 0xda <main+0x44>
+  e2:	00 c0       	rjmp	.+0      	; 0xe4 <main+0x4e>
+  e4:	00 00       	nop
+		_delay_ms(500);
+		button_Mode1=PINC;
+  e6:	96 b1       	in	r25, 0x06	; 6
+		button_Mode2=PINC;
+  e8:	86 b1       	in	r24, 0x06	; 6
+		button_Mode1&=(1<<0);
+		button_Mode2&=(1<<3);
+  ea:	88 70       	andi	r24, 0x08	; 8
+		if (button_Mode1==1  && button_Mode2==0){
+  ec:	49 2f       	mov	r20, r25
+  ee:	41 70       	andi	r20, 0x01	; 1
+  f0:	90 ff       	sbrs	r25, 0
+  f2:	ed cf       	rjmp	.-38     	; 0xce <main+0x38>
+  f4:	81 11       	cpse	r24, r1
+  f6:	eb cf       	rjmp	.-42     	; 0xce <main+0x38>
+  f8:	9f e9       	ldi	r25, 0x9F	; 159
+  fa:	e6 e8       	ldi	r30, 0x86	; 134
+  fc:	f1 e0       	ldi	r31, 0x01	; 1
+  fe:	91 50       	subi	r25, 0x01	; 1
+ 100:	e0 40       	sbci	r30, 0x00	; 0
+ 102:	f0 40       	sbci	r31, 0x00	; 0
+ 104:	e1 f7       	brne	.-8      	; 0xfe <main+0x68>
+ 106:	00 c0       	rjmp	.+0      	; 0x108 <main+0x72>
+ 108:	00 00       	nop
+			_delay_ms(500);
+			PORTB=0x00;
+ 10a:	15 b8       	out	0x05, r1	; 5
+			for(int i=0; i<8;i++){
+ 10c:	20 e0       	ldi	r18, 0x00	; 0
+ 10e:	30 e0       	ldi	r19, 0x00	; 0
+ 110:	14 c0       	rjmp	.+40     	; 0x13a <main+0xa4>
+				if(button_Mode1==1  && button_Mode2==0){
+ 112:	41 30       	cpi	r20, 0x01	; 1
+ 114:	a9 f4       	brne	.+42     	; 0x140 <main+0xaa>
+ 116:	81 11       	cpse	r24, r1
+ 118:	13 c0       	rjmp	.+38     	; 0x140 <main+0xaa>
+					PORTB=arr[i];
+ 11a:	e1 e0       	ldi	r30, 0x01	; 1
+ 11c:	f0 e0       	ldi	r31, 0x00	; 0
+ 11e:	ec 0f       	add	r30, r28
+ 120:	fd 1f       	adc	r31, r29
+ 122:	e2 0f       	add	r30, r18
+ 124:	f3 1f       	adc	r31, r19
+ 126:	90 81       	ld	r25, Z
+ 128:	95 b9       	out	0x05, r25	; 5
+ 12a:	ef e4       	ldi	r30, 0x4F	; 79
+ 12c:	f3 ec       	ldi	r31, 0xC3	; 195
+ 12e:	31 97       	sbiw	r30, 0x01	; 1
+ 130:	f1 f7       	brne	.-4      	; 0x12e <main+0x98>
+ 132:	00 c0       	rjmp	.+0      	; 0x134 <main+0x9e>
+ 134:	00 00       	nop
+		button_Mode1&=(1<<0);
+		button_Mode2&=(1<<3);
+		if (button_Mode1==1  && button_Mode2==0){
+			_delay_ms(500);
+			PORTB=0x00;
+			for(int i=0; i<8;i++){
+ 136:	2f 5f       	subi	r18, 0xFF	; 255
+ 138:	3f 4f       	sbci	r19, 0xFF	; 255
+ 13a:	28 30       	cpi	r18, 0x08	; 8
+ 13c:	31 05       	cpc	r19, r1
+ 13e:	4c f3       	brlt	.-46     	; 0x112 <main+0x7c>
+					_delay_ms(200);
+				}
+				else {break;}
+				
+			}
+			PORTB=0x00;
+ 140:	15 b8       	out	0x05, r1	; 5
+			for(int i=8;i>0;i--){
+ 142:	28 e0       	ldi	r18, 0x08	; 8
+ 144:	30 e0       	ldi	r19, 0x00	; 0
+ 146:	14 c0       	rjmp	.+40     	; 0x170 <main+0xda>
+				if(button_Mode1==1  && button_Mode2==0){
+ 148:	41 30       	cpi	r20, 0x01	; 1
+ 14a:	09 f6       	brne	.-126    	; 0xce <main+0x38>
+ 14c:	81 11       	cpse	r24, r1
+ 14e:	bf cf       	rjmp	.-130    	; 0xce <main+0x38>
+					PORTB=arr[i];
+ 150:	e1 e0       	ldi	r30, 0x01	; 1
+ 152:	f0 e0       	ldi	r31, 0x00	; 0
+ 154:	ec 0f       	add	r30, r28
+ 156:	fd 1f       	adc	r31, r29
+ 158:	e2 0f       	add	r30, r18
+ 15a:	f3 1f       	adc	r31, r19
+ 15c:	90 81       	ld	r25, Z
+ 15e:	95 b9       	out	0x05, r25	; 5
+ 160:	ef e4       	ldi	r30, 0x4F	; 79
+ 162:	f3 ec       	ldi	r31, 0xC3	; 195
+ 164:	31 97       	sbiw	r30, 0x01	; 1
+ 166:	f1 f7       	brne	.-4      	; 0x164 <main+0xce>
+ 168:	00 c0       	rjmp	.+0      	; 0x16a <main+0xd4>
+ 16a:	00 00       	nop
+				}
+				else {break;}
+				
+			}
+			PORTB=0x00;
+			for(int i=8;i>0;i--){
+ 16c:	21 50       	subi	r18, 0x01	; 1
+ 16e:	31 09       	sbc	r19, r1
+ 170:	12 16       	cp	r1, r18
+ 172:	13 06       	cpc	r1, r19
+ 174:	4c f3       	brlt	.-46     	; 0x148 <main+0xb2>
+ 176:	ab cf       	rjmp	.-170    	; 0xce <main+0x38>
+
+00000178 <_exit>:
+ 178:	f8 94       	cli
+
+0000017a <__stop_program>:
+ 17a:	ff cf       	rjmp	.-2      	; 0x17a <__stop_program>
